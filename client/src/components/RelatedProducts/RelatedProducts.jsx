@@ -55,9 +55,9 @@ class RelatedProducts extends React.Component {
 
   // helper for ratings stars //
   getWA(metadata) {
-    const { ratings } = metadata;
-    const waArray = Object.keys(ratings).map((key) => Number(key) * Number(ratings[key]));
-    const total = Object.values(ratings).reduce((sum, val) => Number(sum) + Number(val));
+    const { rating } = metadata;
+    const waArray = Object.keys(rating).map((key) => Number(key) * Number(rating[key]));
+    const total = Object.values(rating).reduce((sum, val) => Number(sum) + Number(val));
     const wa = waArray.reduce((sum, val) => sum + val) / total;
     return wa;
   };

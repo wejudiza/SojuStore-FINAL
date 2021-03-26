@@ -2,8 +2,12 @@
 const axios = require('axios');
 
 // Import github headers config
-const config = require('./config.js');
-config.url = `${config.url}/reviews`;
+// const config = require('./config.js');
+// config.url = `${config.url}/reviews`;
+
+const config = {
+  url: 'http://54.153.2.175/reviews'
+}
 
 // Controllers for Ratings & Reviews
 const controllersRR = {
@@ -22,7 +26,10 @@ const controllersRR = {
   // Get review meta data by product id
   getReviewMeta: (req, res) => {
     axios.get(`${config.url}/meta/?product_id=${req.params.product_id}`, config.headers)
-      .then((resp) => res.status(200).send(resp.data))
+      .then((resp) => {
+        console.log(resp.data)
+        res.status(200).send(resp.data)
+      })
       .catch((err) => res.status(400).send(err));
   },
 

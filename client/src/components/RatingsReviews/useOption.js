@@ -6,7 +6,7 @@ export default function useOption(initialValues) {
   return [
     values,
     (e) => {
-      console.log(values);
+      // console.log(values);
       setValues({
         ...values,
         [e.target.name]: Number(e.target.value)

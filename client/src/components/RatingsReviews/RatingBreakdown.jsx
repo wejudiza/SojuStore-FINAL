@@ -7,10 +7,10 @@ import RatingBreakdownBar from './RatingBreakdownBar.jsx';
 
 // Helper function that computes WA of ratings
 const getWA = (metadata) => {
-  const { ratings } = metadata;
-  const waArray = Object.keys(ratings).map((key) => Number(key) * Number(ratings[key]));
-  if (Object.values(ratings).length > 1) {
-    let total = Object.values(ratings).reduce((sum, val) => Number(sum) + Number(val));
+  const { rating } = metadata;
+  const waArray = Object.keys(rating).map((key) => Number(key) * Number(rating[key]));
+  if (Object.values(rating).length > 1) {
+    let total = Object.values(rating).reduce((sum, val) => Number(sum) + Number(val));
     total = total === 0 ? 1 : total;
     let wa = waArray.reduce((sum, val) => sum + val) / total;
     wa = wa ?? 0;
@@ -20,11 +20,11 @@ const getWA = (metadata) => {
 
 const getDistribution = (metadata) => {
   const dist = {};
-  const { ratings } = metadata;
-  if (Object.values(ratings).length > 1) {
-    let total = Object.values(ratings).reduce((sum, val) => Number(sum) + Number(val));
+  const { rating } = metadata;
+  if (Object.values(rating).length > 1) {
+    let total = Object.values(rating).reduce((sum, val) => Number(sum) + Number(val));
     total = total === 0 ? 1 : total;
-    Object.keys(ratings).map((key) => dist[key] = Number(ratings[key] ?? 0) / total * 100);
+    Object.keys(rating).map((key) => dist[key] = Number(rating[key] ?? 0) / total * 100);
     return dist;
   }
 };
@@ -69,7 +69,7 @@ export default function RatingBreakdown(props) {
           key={key}
           rating={key}
           dist={ratingDist[key]}
-          count={reviewMetadata.ratings[key]}
+          count={reviewMetadata.rating[key]}
           barColors={barColors}
           handleFilter={handleFilter}
         />

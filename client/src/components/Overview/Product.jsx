@@ -121,10 +121,10 @@ function Product(props) {
   // helper function to get the WA
   // eslint-disable-next-line consistent-return
   const getWA = (metadata) => {
-    const { ratings } = metadata;
-    const waArray = Object.keys(ratings).map((key) => Number(key) * Number(ratings[key]));
-    if (Object.values(ratings).length > 1) {
-      let total = Object.values(ratings).reduce((sum, val) => Number(sum) + Number(val));
+    const { rating } = metadata;
+    const waArray = Object.keys(rating).map((key) => Number(key) * Number(rating[key]));
+    if (Object.values(rating).length > 1) {
+      let total = Object.values(rating).reduce((sum, val) => Number(sum) + Number(val));
       total = total === 0 ? 1 : total;
       let wa = waArray.reduce((sum, val) => sum + val) / total;
       wa = wa ?? 0;
